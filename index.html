@@ -3,8 +3,52 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0b0b0c" />
 <title>Kasper Meldgaard — Strategic Product Development</title>
-<meta name="description" content="Kasper Meldgaard — Strategic product development leader. 15 years shaping the global furniture industry. Speaking, advisory and board engagements." />
+<meta name="description" content="Kasper Meldgaard leads one of Scandinavia's most experienced product development studios — shaping strategy, engineering and design for global furniture brands. Available for board, advisory and speaking." />
+<meta name="author" content="Kasper Meldgaard" />
+<link rel="canonical" href="https://kaspermeldgaard.dk/" />
+
+<!-- Open Graph / LinkedIn -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://kaspermeldgaard.dk/" />
+<meta property="og:title" content="Kasper Meldgaard — Strategic Product Development" />
+<meta property="og:description" content="15 years shaping the global furniture industry. Director of Says Who. Available for board, advisory and speaking." />
+<meta property="og:image" content="https://kaspermeldgaard.dk/portrait-hero.jpg" />
+<meta property="og:locale" content="en_GB" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kasper Meldgaard — Strategic Product Development" />
+<meta name="twitter:description" content="15 years shaping the global furniture industry. Director of Says Who." />
+<meta name="twitter:image" content="https://kaspermeldgaard.dk/portrait-hero.jpg" />
+
+<!-- Favicon (inline SVG monogram) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0b0c'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' font-weight='500' fill='%23d8ff4a' text-anchor='middle'%3EKM%3C/text%3E%3C/svg%3E" />
+
+<!-- Structured data: Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kasper Meldgaard",
+  "jobTitle": "Director of Strategic Product Development",
+  "email": "km@sayswho.dk",
+  "url": "https://kaspermeldgaard.dk",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Says Who",
+    "url": "https://sayswho.dk"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Copenhagen",
+    "addressCountry": "DK"
+  },
+  "knowsAbout": ["Product Development", "Furniture Design", "Design Leadership", "AI in Design", "Licensing"]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&display=swap" rel="stylesheet">
@@ -33,9 +77,20 @@
   }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* Skip link for accessibility */
+  .skip-link {
+    position: absolute; top: -40px; left: 12px;
+    background: var(--accent); color: var(--bg);
+    padding: 10px 16px; border-radius: 8px; z-index: 100;
+    font-weight: 500; font-size: 14px;
+    transition: top .2s ease;
+  }
+  .skip-link:focus { top: 12px; }
 
   .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
-  section { padding: 120px 0; border-top: 1px solid var(--line); }
+  section { padding: 120px 0; border-top: 1px solid var(--line); scroll-margin-top: 80px; }
   @media (max-width: 720px) { section { padding: 80px 0; } }
 
   nav {
@@ -279,28 +334,37 @@
 
   .logos {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--line);
     border: 1px solid var(--line);
     border-radius: 16px;
     overflow: hidden;
   }
-  @media (max-width: 900px) { .logos { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 500px) { .logos { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 720px) { .logos { grid-template-columns: repeat(2, 1fr); } }
   .logo-cell {
     background: var(--bg);
-    aspect-ratio: 3/2;
-    display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 5/2;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
     padding: 24px;
     font-family: 'Fraunces', serif;
-    font-size: 16px;
+    font-size: clamp(17px, 1.5vw, 22px);
+    font-weight: 400;
     color: var(--fg-dim);
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
     transition: color .25s ease, background .25s ease;
     text-align: center;
+    gap: 4px;
   }
   .logo-cell:hover { color: var(--fg); background: var(--bg-soft); }
+  .logo-cell .loc {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    opacity: 0.65;
+  }
 
   .engage {
     display: grid;
@@ -432,40 +496,51 @@
 
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
   .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">KM<span> — Strategic Product Development</span></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav aria-label="Primary">
+  <a href="#top" class="logo" aria-label="Kasper Meldgaard — home">KM<span> — Strategic Product Development</span></a>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#engage">Engage</a></li>
+    <li><a href="#contact">Contact</a></li>
     <li class="nav-li-cta"><a class="nav-cta" href="https://sayswho.dk" target="_blank" rel="noopener">Says Who ↗</a></li>
   </ul>
 </nav>
 
-<header class="hero wrap">
+<main id="main">
+
+<header class="hero wrap" id="top">
   <div class="hero-inner">
     <div class="reveal">
       <div class="eyebrow">Strategic Product Development · Copenhagen</div>
       <h1>Building the next generation of <em>global furniture brands.</em></h1>
       <p class="lead">
-        I lead one of Scandinavia's most experienced product development studios — shaping strategy, engineering and design for retailers and brands that have defined the industry for the past 15 years. Today I work at the intersection of craft, AI and commercial scale.
+        15 years shaping strategy, engineering and design for the retailers and brands that define the industry. Director of Says Who — working at the intersection of craft, commercial scale and AI.
       </p>
       <div class="cta-row">
         <a class="btn primary" href="#engage">
           Work with me
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
         <a class="btn ghost" href="https://sayswho.dk" target="_blank" rel="noopener">Visit Says Who ↗</a>
       </div>
     </div>
     <div class="portrait reveal">
-      <img src="portrait-hero.jpg" alt="Kasper Meldgaard" />
-      <div class="portrait-badge"><span class="dot"></span>Available for advisory &amp; board</div>
+      <img src="portrait-hero.jpg" alt="Portrait of Kasper Meldgaard" fetchpriority="high" decoding="async" />
+      <div class="portrait-badge"><span class="dot" aria-hidden="true"></span>Available for advisory &amp; board</div>
     </div>
   </div>
 </header>
@@ -487,7 +562,7 @@
     </div>
     <div class="about-grid reveal">
       <div class="about-img">
-        <img src="team-strategy.png" alt="Kasper leading a product development session" />
+        <img src="team-strategy.png" alt="Kasper leading a product development session" loading="lazy" decoding="async" />
       </div>
       <div class="about-text">
         <p>For 15 years I have built products, teams and studios at the intersection of Scandinavian design craft and international retail scale.</p>
@@ -522,9 +597,9 @@
       </div>
     </div>
     <div class="gallery reveal">
-      <div class="gallery-item"><img src="team-corkboard.jpg" alt="Studio review session" /><div class="cap">Studio</div></div>
-      <div class="gallery-item"><img src="team-tablet.jpg" alt="Engineering review" /><div class="cap">Review</div></div>
-      <div class="gallery-item"><img src="portrait-studio.jpg" alt="Kasper Meldgaard in studio" /><div class="cap">In studio</div></div>
+      <div class="gallery-item"><img src="team-corkboard.jpg" alt="Studio review session" loading="lazy" decoding="async" /><div class="cap">Studio</div></div>
+      <div class="gallery-item"><img src="team-tablet.jpg" alt="Engineering review" loading="lazy" decoding="async" /><div class="cap">Review</div></div>
+      <div class="gallery-item"><img src="portrait-studio.jpg" alt="Kasper Meldgaard in studio" loading="lazy" decoding="async" /><div class="cap">In studio</div></div>
     </div>
   </div>
 </section>
@@ -535,19 +610,16 @@
       <div class="sec-label">02 / Selected clients</div>
       <h2>Trusted by brands and retailers that <em>shape the industry.</em></h2>
     </div>
-    <div class="logos reveal">
-      <div class="logo-cell">Brand 01</div>
-      <div class="logo-cell">Brand 02</div>
-      <div class="logo-cell">Brand 03</div>
-      <div class="logo-cell">Brand 04</div>
-      <div class="logo-cell">Brand 05</div>
-      <div class="logo-cell">Brand 06</div>
-      <div class="logo-cell">Brand 07</div>
-      <div class="logo-cell">Brand 08</div>
-      <div class="logo-cell">Brand 09</div>
-      <div class="logo-cell">Brand 10</div>
-      <div class="logo-cell">Brand 11</div>
-      <div class="logo-cell">Brand 12</div>
+    <div class="logos reveal" aria-label="Selected brands and retailers">
+      <div class="logo-cell">Fritz Hansen<span class="loc">Denmark</span></div>
+      <div class="logo-cell">Ferm Living<span class="loc">Denmark</span></div>
+      <div class="logo-cell">ILVA<span class="loc">Denmark</span></div>
+      <div class="logo-cell">John Lewis<span class="loc">United Kingdom</span></div>
+      <div class="logo-cell">Heal's<span class="loc">United Kingdom</span></div>
+      <div class="logo-cell">Westwing<span class="loc">Germany</span></div>
+      <div class="logo-cell">Mio<span class="loc">Sweden</span></div>
+      <div class="logo-cell">Actus<span class="loc">Japan</span></div>
+      <div class="logo-cell">Freedom<span class="loc">Australia</span></div>
     </div>
   </div>
 </section>
@@ -560,7 +632,7 @@
     </div>
     <div class="engage reveal">
       <div class="engage-card">
-        <div class="bg-img"><img src="team-strategy.png" alt="" /></div>
+        <div class="bg-img"><img src="team-strategy.png" alt="" loading="lazy" decoding="async" /></div>
         <h3>Board &amp; Advisory</h3>
         <p>Non-executive board positions and strategic advisory for design-led consumer brands, furniture manufacturers and product-driven scale-ups. Particular interest in companies navigating international expansion or AI-enabled operations.</p>
         <a class="arrow-link" href="mailto:km@sayswho.dk?subject=Board%20enquiry">
@@ -569,7 +641,7 @@
         </a>
       </div>
       <div class="engage-card">
-        <div class="bg-img"><img src="speaking-keynote.png" alt="" /></div>
+        <div class="bg-img"><img src="speaking-keynote.png" alt="" loading="lazy" decoding="async" /></div>
         <h3>Speaking &amp; Keynotes</h3>
         <p>Talks, panels and workshops on strategic product development, design leadership, and how AI is reshaping the furniture and product industries. English and Danish. International audiences welcome.</p>
         <a class="arrow-link" href="mailto:km@sayswho.dk?subject=Speaking%20enquiry">
@@ -580,7 +652,7 @@
     </div>
     <div class="sw-card reveal" style="margin-top: 24px;">
       <div class="sw-media">
-        <img src="speaking-charts.png" alt="Kasper presenting Says Who's work" />
+        <img src="speaking-charts.png" alt="Kasper presenting Says Who's work" loading="lazy" decoding="async" />
       </div>
       <div class="sw-body">
         <div class="sw-tag">The studio</div>
@@ -598,6 +670,8 @@
   </div>
 </section>
 
+</main>
+
 <footer id="contact">
   <div class="wrap">
     <div class="foot-grid reveal">
@@ -610,12 +684,12 @@
       </div>
       <div class="foot-col">
         <h4>Connect</h4>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="mailto:km@sayswho.dk">Email</a>
+        <a href="https://www.linkedin.com/in/kasper-meldgaard" target="_blank" rel="me noopener" aria-label="LinkedIn profile">LinkedIn ↗</a>
+        <a href="mailto:km@sayswho.dk" aria-label="Email Kasper">Email</a>
       </div>
       <div class="foot-col">
         <h4>Studio</h4>
-        <a href="https://sayswho.dk" target="_blank" rel="noopener">Says Who ↗</a>
+        <a href="https://sayswho.dk" target="_blank" rel="noopener" aria-label="Says Who — furniture design bureau">Says Who ↗</a>
         <a href="#engage">Board &amp; speaking</a>
       </div>
     </div>
